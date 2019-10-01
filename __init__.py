@@ -1,5 +1,7 @@
 from astropy import table, units as u
 import numpy as np
+import os
+
 
 def read_aas_txt_table(path):
     with open(path) as f:
@@ -105,3 +107,11 @@ def read_aas_txt_table(path):
         tbl[name].description = description
 
     return tbl
+
+
+def test():
+    module_folder = os.path.dirname(__file__)
+    table_names = ('richey-yowell2019.txt',)
+    for name in table_names:
+        path = os.path.join(module_folder, 'tests', name)
+        read_aas_txt_table(path)
